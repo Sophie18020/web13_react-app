@@ -1,0 +1,226 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><title>AVEL Waterproof TVs</title><meta name="katt" content="text/html: charset=utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script><link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"><link rel="stylesheet" href="slick/slick.css"/><link rel="stylesheet" href="slick/slick-theme.css"/><script defer="defer" src="slick/slick.min.js"></script><script src="https://kit.fontawesome.com/94e1320734.js" crossorigin="anonymous"></script><link rel="stylesheet" href="./style.css" media="screen"></head><body><div id="root"></div><script>$(document).ready(function(){
+$('.myslick-slider').slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    infinite: true,
+    centerMode: true,
+    dots: true,
+    arrows: true,
+    adaptiveHeight: true,
+    lazyLoad: 'ondemand',
+    responsive: [
+      {
+        breakpoint: 800,
+        settings: {
+          arrows: false,
+          centerMode: false,
+          slidesToShow: 1,
+          arrows: true,
+          dots: false
+        }
+      }]
+  });
+});
+$(document).ready(function(){
+$('.cert-slider').slick({
+slidesToShow: 3,
+infinite: true,
+prevArrow: '<i class="material-icons prev2">keyboard_arrow_left</i>',
+nextArrow: '<i class="material-icons next2">keyboard_arrow_right</i>',
+arrows: false,
+dots: false,
+responsive: [
+  {
+    breakpoint: 800,
+    settings: {
+      arrows: true,
+      slidesToShow: 2
+    }
+  }]
+});
+});
+$(".butt2").click(function(){
+  
+$("html").addClass("openNav");
+
+});
+$(".bcanc").click(function(){
+
+$("html").removeClass("openNav");
+
+});
+
+let forma = document.getElementById("form_link");
+let my_button = document.getElementById("my_button");
+let button_type = document.getElementById("button_type");
+let button_text = document.getElementById("button_text");
+let name = document.getElementById("name");
+let email = document.getElementById("email");
+let comment = document.getElementById("comment");
+let close_form = document.getElementById("close_form");
+let arrow = document.getElementById("arrow");
+let direction = 0;
+/*
+getDataStorage();
+
+var start;
+
+function step(timestamp) {
+if (!start) start = timestamp;
+var progress = timestamp - start;
+forma.style.height = Math.min(170 + progress/2, 370) + 'px';
+my_button.style.top = Math.min(115 + progress/2, 315) + 'px';
+close_form.style.width = Math.min(progress/15, 30) + 'px';
+close_form.style.height = close_form.style.width;
+if (progress > 0) {
+name.style.display = "block";
+}
+if (progress > 80) {
+email.style.display = "block";
+}
+if (progress > 160) {
+comment.style.display = "block";
+comment.style.height = Math.min(progress/2 - 80, 110) + 'px';
+}
+if (progress/2 - 80 > 110) {
+arrow.style.display = "block";
+}
+if (progress < 1000) {
+window.requestAnimationFrame(step);
+}
+}
+/*
+$(".butt3").click(function(){
+if (direction == 0) {
+start=null;
+window.requestAnimationFrame(step);
+button_text.innerHTML = "Send";
+history.pushState(1, "title", "#form_link");
+direction = 1;
+getDataStorage();
+}
+else {
+button_type.type = "submit";
+}
+});
+*/
+$(".slbutt").click(function(){
+forma.scrollIntoView({block: "center", behavior: "smooth"});
+$(".butt3").click();
+});
+/*
+function reverse_step(timestamp) {
+if (!start) start = timestamp;
+var progress = timestamp - start;
+forma.style.height = Math.max(170, 370 - progress/2) + 'px';
+my_button.style.top = Math.max(115, 315 - progress/2) + 'px';
+close_form.style.width = Math.max(0, 30 - progress/15) + 'px';
+close_form.style.height = close_form.style.width;
+if (progress > 0) {
+comment.style.height = Math.max(0, 110 - progress/2) + 'px';
+}
+if (progress/2 > 110) {
+comment.style.display = "none";
+}
+if (progress > 300) {
+email.style.display = "none";
+}
+if (progress/2 + 170 > 370) {
+name.style.display = "none";
+}
+if (progress < 1000) {
+window.requestAnimationFrame(reverse_step);
+}
+}*/
+/*
+$(".close_form").click(function(){
+start=null;
+arrow.style.display = "none";
+window.requestAnimationFrame(reverse_step);
+button_text.innerHTML = "Add Contacts";
+button_type.type = "button";
+history.pushState(0, "title", " ");
+direction = 0;
+});
+*/
+window.onpopstate = function(event) {
+if(event.state==1) {
+console.log("event.state == 1");
+$(".butt3").click();
+}
+else {
+console.log("close_form.click()")
+$(".close_form").click();
+}
+};
+
+function updateStorage() {
+
+localStorage.setItem("name", document.getElementById("name").value);
+localStorage.setItem("email", document.getElementById("email").value);
+localStorage.setItem("comment",document.getElementById("comment").value);
+}
+/*
+function getDataStorage() {
+document.getElementById("name").value = localStorage.getItem("name") || "";
+document.getElementById("email").value = localStorage.getItem("email") || "";
+$("#comment").val(localStorage.getItem("comment") || "");
+}
+*/
+window.addEventListener("DOMContentLoaded", function (event) {
+let profit = document.getElementById("form_link");
+profit.addEventListener("input", function(event) {
+console.log("input");
+updateStorage();
+});
+});
+
+/*
+        function get_promise() {
+            return new Promise((resolve, reject) => {
+                fetch('https://formcarry.com/s/79D4V9NBj_0', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+                    body: JSON.stringify({name: localStorage.getItem("name"), email: localStorage.getItem("email"), comment: localStorage.getItem("comment")})
+                })
+                .then(response => {
+                    console.log(response); 
+                    localStorage.clear();
+                    document.getElementById("name").value = "";
+                    document.getElementById("email").value = "";
+                    $("#comment").val(localStorage.getItem(""));
+                    resolve();
+                })
+                .catch(error => {
+                    console.log(error); 
+                    alert("Test error!"); 
+                    document.getElementById("cat").style.display = "none";
+                    document.getElementById("non_act").style.display = "none";
+                    reject();
+                })
+            });
+        }
+        $(function(){
+            $(".ajaxForm").submit(async function(e){
+                e.preventDefault();
+                document.getElementById("non_act").style.display = "block";
+                document.getElementById("cat").style.display = "block";
+                var x = await get_promise();
+                document.getElementById("cat").style.display = "none";
+                document.getElementById("non_act").style.display = "none";
+
+                document.getElementById("dog").style.display = "block";
+                var start;
+                function step(timestamp) {
+                if (!start) start = timestamp;
+                var progress = timestamp - start;
+                if (progress > 1100) {
+                    document.getElementById("dog").style.display = "none";
+                }
+                if (progress < 1200) {
+                    window.requestAnimationFrame(step);
+                    }
+                }
+                window.requestAnimationFrame(step);
+            });
+        });*/</script><script>!function(p){function e(e){for(var r,t,n=e[0],o=e[1],u=e[2],l=0,a=[];l<n.length;l++)t=n[l],Object.prototype.hasOwnProperty.call(i,t)&&i[t]&&a.push(i[t][0]),i[t]=0;for(r in o)Object.prototype.hasOwnProperty.call(o,r)&&(p[r]=o[r]);for(s&&s(e);a.length;)a.shift()();return c.push.apply(c,u||[]),f()}function f(){for(var e,r=0;r<c.length;r++){for(var t=c[r],n=!0,o=1;o<t.length;o++){var u=t[o];0!==i[u]&&(n=!1)}n&&(c.splice(r--,1),e=l(l.s=t[0]))}return e}var t={},i={1:0},c=[];function l(e){if(t[e])return t[e].exports;var r=t[e]={i:e,l:!1,exports:{}};return p[e].call(r.exports,r,r.exports,l),r.l=!0,r.exports}l.m=p,l.c=t,l.d=function(e,r,t){l.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:t})},l.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},l.t=function(r,e){if(1&e&&(r=l(r)),8&e)return r;if(4&e&&"object"==typeof r&&r&&r.__esModule)return r;var t=Object.create(null);if(l.r(t),Object.defineProperty(t,"default",{enumerable:!0,value:r}),2&e&&"string"!=typeof r)for(var n in r)l.d(t,n,function(e){return r[e]}.bind(null,n));return t},l.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return l.d(r,"a",r),r},l.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},l.p="/web13_react-app/";var r=this.webpackJsonpweb13=this.webpackJsonpweb13||[],n=r.push.bind(r);r.push=e,r=r.slice();for(var o=0;o<r.length;o++)e(r[o]);var s=n;f()}([])</script><script src="/web13_react-app/static/js/2.2e4c0064.chunk.js"></script><script src="/web13_react-app/static/js/main.505a6068.chunk.js"></script></body></html>
